@@ -37,7 +37,7 @@ M *= AF*G
 # тензор моментов сил
 
 def f(t):   # форма импульса
-    if 0 < t <2*np.pi:
+    if 0 < t <np.pi:
         return np.sin(t)
     return 0
 
