@@ -84,7 +84,7 @@ fig = plt.figure(figsize=(5, 5))
 
 def animate(t):
     global max_ampl,  fig
-    
+    fig.clear()
     X, Y = np.linspace(-100, 100, 100), np.linspace(-100, 100, 100)
     field = (np.array([[u([x, y, 0], t) if np.sqrt(x*x+y*y) > 10 else [0, 0, 0] for x in X] for y in Y] ))
     max_ampl = max(max_ampl, field.max())
@@ -103,16 +103,15 @@ def animate(t):
 
 # animate(8)
 # plt.show()
-from tqdm import tqdm
 sin_animation = animation.FuncAnimation(fig, 
                                       animate, 
-                                      frames=tqdm(np.linspace(2, 20, 10)),
+                                      frames=(np.linspace(3, 20, 36)),
                                       interval = 100,
                                       repeat = False)
 
 #  Сохраняем анимацию в виде gif файла:
 sin_animation.save('моя анимация3.gif',
                  writer='imagemagick', 
-                 fps=30)
+                 fps=10)
 
 
